@@ -10,22 +10,7 @@
 <body>
     <section>
       <div class="container active">
-        <div class="user signinBx">
-          <div class="imgBx"><img src="https://images.unsplash.com/photo-1576859958081-27de5c70262a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80" /></div>
-          <div class="formBx">
-            <form>
-              <h2>Sign In</h2>
-              <input type="text" name="" placeholder="Username" />
-              <input type="password" name="" placeholder="Password" />
-              <input type="submit" name="" value="Login" />
-              <p class="signup">
-                Don't have an account ?<a href="#" onclick="toggleForm();">
-                  Sign Up
-                </a>
-              </p>
-            </form>
-          </div>
-        </div>
+        
         <div class="user signupBx">
           <div class="formBx">
             <form method="post" action='/signup'>
@@ -37,7 +22,7 @@
               <input type="submit" name="" value="Sign Up" />
               <p class="signup">
                 Already have an account ?
-                <a href="#" onclick="toggleForm();"> Sign In </a>
+                <a href="/login"> Sign In </a>
               </p>
             </form>
           </div>
@@ -48,4 +33,3 @@
  
   </body>
 </html>
-<script src="js/signup.js"></script>
