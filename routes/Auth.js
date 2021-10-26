@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const root = require('../utils/root')
 const UserModel = require('../models/User')
+require('dotenv').config();
 
 const handleError = (err) => {
 
@@ -22,7 +23,7 @@ const handleError = (err) => {
 }
 const maxAge = 60;
 const createToken = (id) => {
-    return jwt.sign({ id }, 'this is fookin key', ({
+    return jwt.sign({ id }, process.env.SECRET_KEY, ({
         expiresIn: maxAge,
     }))
 }
@@ -89,19 +90,25 @@ Router.post('/login', (req, res) => {
     UserModel.findOne({ email }, async function (err, user) {
 
         if (user == null) {
-           return res.status(400).send('User Not Fookin Found')
+            return res.status(400).send('User Not Fookin Found')
         }
         else {
             const isCorrect = await user.validatePassword(password);
             if (!isCorrect) {
-              return  res.status(400).send('Wrong Password Buddy')
+                return res.status(400).send('Wrong Password Buddy')
             } else {
                 const token = createToken(user._id);
                 console.log(token);
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
-                return res.status(201).json(user._id)
+                return res.redirect('/')
             }
         }
     })
+})
+
+// log fukin out
+Router.get('/logout', (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 })
+    res.redirect('/')
 })
 module.exports = Router;

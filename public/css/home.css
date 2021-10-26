@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+
+body,
+html {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+body {
+  background: url('https://drive.google.com/uc?export=view&id=1ThkYaQoMzO7X5XgnWAOC7XJfqfquDlqM') no-repeat center fixed;
+  overflow: hidden;
+  width: 100vw;
+}
+
+#container {
+  position: relative;
+  top: 50%;
+  margin: auto;
+
+}
+
+canvas {
+  display: none;
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  z-index: 0;
+}
+
+
+#ghost {
+    display: none;
+}
+
+#mainbtn {
+  position: relative;
+    padding: 1em;
+    font-size: 1.2em;
+    font-family: 'Nosifer', cursive;
+    background-color: black;
+    color: #d82d24;
+    border: #d82d24 solid 3px;
+    z-index: 5;
+}
+
+
+#mainbtn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: #a4221b;
+    border: #a4221b solid;
+}
+
+#blood {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 5%;
+  width: 80%;
+  height: auto;
+  animation: bloodAnimate 3s forwards;
+}
+
+@keyframes bloodAnimate {
+  0% {
+    top: 5%;
+    width: 80%;
+  }
+
+  50% {
+    top: 50%;
+    width: 100%;
+  }
+
+  100% {
+    top: 95%;
+    width: 98%;
+  }
+}
+
+#knife {
+  /* full knife */
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: -70%;
+  left: 40%;
+  transform: rotate(170deg);
+  z-index: 3;
+ animation: knifeAnimate .5s forwards;
+}
+
+#knife2 {
+  display: none;
+  position: absolute;
+  width: 150%;
+  height: auto;
+  top: -88%;
+  left: 32%;
+  transform: rotate(170deg);
+  z-index: 4;
+}
+
+@keyframes knifeAnimate {
+  0% {
+    width: 100%;
+    height: auto;
+    top: -500%;
+    left: 500%;
+  }
+
+  50% {
+  
+  }
+
+  100% {
+
+    width: 100%;
+  height: auto;
+  top: -80%;
+  left: 40%;
+
+  }
+}

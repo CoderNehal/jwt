@@ -2,8 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
+const { readFileSync } = require('fs');
+
+const path = require('path');
 //My fookin Imports
-const AuthRoutes = require('./routes/Auth')
+const root = require('./utils/root')
+const AuthRoutes = require('./routes/Auth');
+const {requireAuth} = require('./middlewares/AuthMiddleware')
 const app = express();
 
 app.use(express.static('public'));
@@ -35,8 +40,17 @@ app.get('/getCookies', (req, res) => {
   res.json(cookies)
 })
 
+app.get('/cards', requireAuth , (req, res) => {
+  const html = readFileSync(path.join(root, 'views', 'cards.html'), 'utf-8', (err, data) => {
+    return data;
+  });
+  res.send(html);
+})
 app.use('/', (Req, res) => {
 
-  res.send('<h1>Home Page</h1>');
+  const html = readFileSync(path.join(root, 'views', 'homepage.html'), 'utf-8', (err, data) => {
+    return data;
+  });
+  res.send(html);
 })
 
