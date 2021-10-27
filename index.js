@@ -24,8 +24,8 @@ const dbURI = 'mongodb+srv://demo_user:demo123@demo.eumge.mongodb.net/myFirstDat
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
 
-    console.log('Server started on 3000')
-    app.listen(3000)
+    console.log('Server started on 5000')
+    app.listen(5000,'0.0.0.0')
   })
   .catch((err) => console.log(err));
 app.use(AuthRoutes);
